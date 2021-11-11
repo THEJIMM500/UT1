@@ -28,18 +28,6 @@
         app:layout_constraintVertical_bias="0.286"
         tools:visibility="visible">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </TableLayout>
 
     <Switch
@@ -50,5 +38,15 @@
         android:text="Switch"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="54dp" />
+
+    <Button
+        android:id="@+id/EmpezarPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empezar de nuevo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tablero" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,5 +2,8 @@
     <string name="app_name">TresEnRaya</string>
 
     <string name="Inicio">Bienvenido</string>
+    <string name="JvJ">Jugador vs Jugador</string>
+    <string name="JVM">Jugador vs Maquina</string>
+
 
 </resources>
