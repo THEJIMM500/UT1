@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fila0.setLayoutParams(getLayoutParams());
         fila1.setLayoutParams(getLayoutParams());
         fila2.setLayoutParams(getLayoutParams());
-        fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN));
+        fila0.addView(getButton(0, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila0.addView(getButton(2, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila1.addView(getButton(3, Color.BLACK, Typeface.BOLD, Color.GREEN));
@@ -65,17 +65,17 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pulsado[0]==false){
+                if(pulsado[id]==false){
                     if(jueganX==true){
-                        puntuar(0);
+                        puntuar(id);
                         button.setText("X");
                         jueganX= false;
                     }else{
-                        puntuar(0);
+                        puntuar(id);
                         button.setText("O");
                         jueganX= true;
                     }
-                    pulsado[0]= true;
+                    pulsado[id]= true;
                 }
             }
         });
