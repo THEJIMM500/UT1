@@ -11,6 +11,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private boolean juegalamaquina;
     private boolean jueganX;
@@ -20,14 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private TableRow fila0;
     private TableRow fila1;
     private TableRow fila2;
-    private Button boton0;
-    private Button boton1;
-    private Button boton2;
+    private ArrayList<Button> listaDeBotones;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listaDeBotones=new ArrayList<Button>();
         crearBotonEmpezar();
         CrearPartida();
     }
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         empezarDeNuevo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               partida.iniciar();
-               iniciarBoleanpulsado();
+                partida.iniciar();
+                iniciarBoleanpulsado();
             }
         });
     }
@@ -57,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         fila0 = new TableRow(this);
         fila1 = new TableRow(this);
         fila2 = new TableRow(this);
-        creaBoton0();
-        fila0.addView(boton0);
+        fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN);
         fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila0.addView(getButton(2, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila1.addView(getButton(3, Color.BLACK, Typeface.BOLD, Color.GREEN));
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void creaBoton0() {
         int id =0;
-         boton0 = new Button(this);
+        boton0 = new Button(this);
         boton0.setId(id);
         boton0.setText(" ");
         boton0.setTextColor( Color.BLACK);
