@@ -25,7 +25,7 @@ public class LogicaTresEnRaya {
     }
     public void MueveJugador2(int pos){
         if( tablero[pos]==0){
-            tablero[pos]=1;
+            tablero[pos]=2;
         }
     }
     public boolean MovimientoValido(int pos){
