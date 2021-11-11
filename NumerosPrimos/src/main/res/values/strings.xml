@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Numeros Primos</string>
+
+    <string name="Texto_Insertar_Numero">Inserte un numero de 3 cifras mayor a 0</string>
+
+    <string name="Texto_Boton">Calcular</string>
+
+    <string name="Texto_resultado">Resultado</string>
+
+    <string name="Texto_error_numero">El numero que ha introducido es erroneo</string>
+    <string name="Texto_error_Letras">No ha introducido un numero</string>
+</resources>
