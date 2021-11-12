@@ -8,13 +8,15 @@
 
     <TextView
         android:id="@+id/QuienJuega"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
         android:text="@string/Inicio"
         app:layout_constraintBottom_toTopOf="@+id/Tablero"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/Modo_Juego"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
 
     <TableLayout
         android:id="@+id/Tablero"
@@ -31,22 +33,43 @@
     </TableLayout>
 
     <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/Modo_Juego"
+        android:layout_width="138dp"
+        android:layout_height="49dp"
         android:minHeight="48dp"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="54dp" />
+        android:text="@string/Modo_Juego"
+        app:layout_constraintBottom_toTopOf="@+id/Tablero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
 
     <Button
         android:id="@+id/EmpezarPartida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Empezar de nuevo"
+        android:text="@string/empezar_de_nuevo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tablero" />
+
+    <TextView
+        android:id="@+id/TextoQuienEmpieza"
+        android:layout_width="160dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/Tablero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/Modo_Juego"
+        app:layout_constraintTop_toBottomOf="@+id/QuienJuega"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        tools:layout_editor_absoluteX="235dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

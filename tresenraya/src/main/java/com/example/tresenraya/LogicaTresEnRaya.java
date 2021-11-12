@@ -35,6 +35,14 @@ public class LogicaTresEnRaya {
             return false;
         }
     }
+    public boolean quedanMovimientos(){
+        for (int cont =0;cont<tablero.length;cont++){
+            if(tablero[cont]==0) {
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean GanaJugador1(){
         //horizontales
         if((tablero[0]==1)&&(tablero[1]==1)&&(tablero[2]==1)){

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean jueganX;
     private boolean[] pulsado;
     private LogicaTresEnRaya partida;
+    private TextView textoQuienEmpieza;
     private Button empezarDeNuevo;
     private TableRow fila0;
     private TableRow fila1;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        textoQuienEmpieza= findViewById(R.id.TextoQuienEmpieza);
         setContentView(R.layout.activity_main);
         listaDeBotones=new ArrayList<Button>();
         crearBotonEmpezar();
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 partida.iniciar();
                 iniciarBoleanpulsado();
+                reiniciarBotones();
+                jueganX= empiezanLasX();
+
             }
         });
     }
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         iniciarBoleanpulsado();
         partida= new LogicaTresEnRaya();
         juegalamaquina=false;
-        jueganX=true;
+        jueganX=empiezanLasX();
     }
 
     private void CrearTabla() {
@@ -58,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         fila0 = new TableRow(this);
         fila1 = new TableRow(this);
         fila2 = new TableRow(this);
-        fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN);
+        fila0.addView(getButton(0, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila0.addView(getButton(1, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila0.addView(getButton(2, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila1.addView(getButton(3, Color.BLACK, Typeface.BOLD, Color.GREEN));
@@ -67,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         fila2.addView(getButton(6, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila2.addView(getButton(7, Color.BLACK, Typeface.BOLD, Color.GREEN));
         fila2.addView(getButton(8, Color.BLACK, Typeface.BOLD, Color.GREEN));
-        tablero.addView(fila0, getTblLayoutParams());
-        tablero.addView(fila1, getTblLayoutParams());
-        tablero.addView(fila2, getTblLayoutParams());
+        tablero.addView(fila0);
+        tablero.addView(fila1);
+        tablero.addView(fila2);
 
     }
     private Button getButton(int id,int color, int typeface, int bgColor) {
@@ -82,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         //fijamos el tipo de la letra y el estilo
         button.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
         button.setBackgroundColor(bgColor);
-        //suministra parámetros al padre de la View
+        //esto hace que se vena las lineas de los botones
         button.setLayoutParams(getLayoutParams());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,52 +114,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     pulsado[id]= true;
+                    empate();
                 }
             }
         });
+        listaDeBotones.add(button);
         return button;
     }
-    private void creaBoton0() {
-        int id =0;
-        boton0 = new Button(this);
-        boton0.setId(id);
-        boton0.setText(" ");
-        boton0.setTextColor( Color.BLACK);
-        //fijamos el relleno (espacio dentro del View)
-        boton0.setPadding(20, 20, 20, 20);
-        //fijamos el tipo de la letra y el estilo
-        boton0.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        boton0.setBackgroundColor(Color.GREEN);
-        //suministra parámetros al padre de la View
-        boton0.setLayoutParams(getLayoutParams());
-        boton0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(pulsado[id]==false){
-                    if(jueganX==true){
-                        puntuar(id);
-                        boton0.setText("X");
-                        jueganX= false;
-                        mandarMensaje("Juega el Jugador 2");
-                        if(partida.GanaJugador1()==true){
-                            mandarMensaje("Ha ganado el Jugador 1");
-                            bloquearBotones();
-                        }
-                    }else{
-                        puntuar(id);
-                        boton0.setText("O");
-                        jueganX= true;
-                        mandarMensaje("Juega el Jugador 1");
-                        if(partida.GanaJugador2()==true){
-                            mandarMensaje("Ha ganado el Jugador 2");
-                            bloquearBotones();
-                        }
-                    }
-                    pulsado[id]= true;
-                }
-            }
-        });
-    }
+
     private TableRow.LayoutParams getLayoutParams() {
         TableRow.LayoutParams params = new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT,
@@ -191,5 +159,25 @@ public class MainActivity extends AppCompatActivity {
             pulsado[cont]=true;
         }
     }
-
+    private void reiniciarBotones(){
+        for (int cont =0;cont< listaDeBotones.size(); cont++) {
+            Button boton = listaDeBotones.get(cont);
+            boton.setText(" ");
+        }
+    }
+    private void empate (){
+        if(partida.quedanMovimientos()==false){
+            mandarMensaje("Los Jugadores han empatado");
+        }
+    };
+    private boolean empiezanLasX(){
+        double numeroAleatorio= Math.round(Math.random());
+        if(numeroAleatorio==1){
+            textoQuienEmpieza.setText("Juega el jugador 1");
+            return true;
+        }else{
+            //textoQuienEmpieza.setText("Juega el jugador 1");
+            return false;
+        }
+    }
 }
