@@ -7,19 +7,23 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private boolean juegalamaquina;
+    private boolean juegaContraLaMaquina;
     private boolean jueganX;
     private boolean[] pulsado;
     private LogicaTresEnRaya partida;
-    private TextView textoQuienEmpieza;
+    private ToggleButton modo_juego;
+    private TextView indicador_modo_juego;
     private Button empezarDeNuevo;
     private TableRow fila0;
     private TableRow fila1;
@@ -29,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        textoQuienEmpieza= findViewById(R.id.TextoQuienEmpieza);
         setContentView(R.layout.activity_main);
+
         listaDeBotones=new ArrayList<Button>();
         crearBotonEmpezar();
         CrearPartida();
@@ -53,9 +57,30 @@ public class MainActivity extends AppCompatActivity {
     private void CrearPartida() {
         CrearTabla();
         iniciarBoleanpulsado();
+
+        indicador_modo_juego= findViewById(R.id.TextoModoJuego);
+        indicador_modo_juego.setText(R.string.JvJ);
+        crearTogleBotton();
         partida= new LogicaTresEnRaya();
+        juegaContraLaMaquina= false;
         juegalamaquina=false;
         jueganX=empiezanLasX();
+    }
+
+    private void crearTogleBotton() {
+        modo_juego =findViewById(R.id.ModoJuego);
+        modo_juego.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    indicador_modo_juego.setText(R.string.JVM);
+                    juegaContraLaMaquina=true;
+                } else {
+                    indicador_modo_juego.setText(R.string.JvJ);
+                    juegaContraLaMaquina=false;
+                }
+            }
+        });
     }
 
     private void CrearTabla() {
@@ -99,22 +124,30 @@ public class MainActivity extends AppCompatActivity {
                         button.setText("X");
                         jueganX= false;
                         mandarMensaje("Juega el Jugador 2");
+
+                        JuegaMaquina();
                         if(partida.GanaJugador1()==true){
                             mandarMensaje("Ha ganado el Jugador 1");
                             bloquearBotones();
+                        }else{
+                            empate();
                         }
+
                     }else{
                         puntuar(id);
                         button.setText("O");
                         jueganX= true;
                         mandarMensaje("Juega el Jugador 1");
+
+                        JuegaMaquina();
                         if(partida.GanaJugador2()==true){
                             mandarMensaje("Ha ganado el Jugador 2");
                             bloquearBotones();
+                        }else{
+                            empate();
                         }
                     }
                     pulsado[id]= true;
-                    empate();
                 }
             }
         });
@@ -173,11 +206,30 @@ public class MainActivity extends AppCompatActivity {
     private boolean empiezanLasX(){
         double numeroAleatorio= Math.round(Math.random());
         if(numeroAleatorio==1){
-            textoQuienEmpieza.setText("Juega el jugador 1");
+            mandarMensaje("juegan las X");
             return true;
         }else{
-            //textoQuienEmpieza.setText("Juega el jugador 1");
+        mandarMensaje("juegan las O");
             return false;
         }
+    }
+    private void JuegaMaquina(){
+        if(juegaContraLaMaquina==true) {
+            if(jueganX== true){
+                int posicionJugada=partida.MueveOrdenador1();
+                Button boton= listaDeBotones.get(posicionJugada);
+                boton.setText("X");
+                pulsado[posicionJugada]=true;
+                jueganX=false;
+                mandarMensaje("Juega el Jugador 2");
+            }else{
+                int posicionJugada=partida.MueveOrdenador2();
+                Button boton= listaDeBotones.get(posicionJugada);
+                boton.setText("O");
+                jueganX=true;
+                mandarMensaje("Juega el Jugador 1");
+            }
+        }
+
     }
 }

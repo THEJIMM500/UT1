@@ -23,6 +23,22 @@ public class LogicaTresEnRaya {
             tablero[pos]=1;
         }
     }
+    public int MueveOrdenador1(){
+        int numeroAleatorio= (int) Math.round(Math.random()*8);
+        while(MovimientoValido(numeroAleatorio)==false){
+            numeroAleatorio= (int) Math.round(Math.random()*8);
+        }
+        tablero[numeroAleatorio]=1;
+        return numeroAleatorio;
+    }
+    public int MueveOrdenador2(){
+        int numeroAleatorio= (int) Math.round(Math.random()*8);
+        while(MovimientoValido(numeroAleatorio)==false){
+            numeroAleatorio= (int) Math.round(Math.random()*8);
+        }
+        tablero[numeroAleatorio]=2;
+        return numeroAleatorio;
+    }
     public void MueveJugador2(int pos){
         if( tablero[pos]==0){
             tablero[pos]=2;
