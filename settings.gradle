@@ -1,0 +1,6 @@
+include ':app'
+rootProject.name='UT1'
+include ':ejemplo1'
+include ':NumerosPrimos'
+include ':tresenraya'
+include ':ejemplocomunicacionactiviti'
