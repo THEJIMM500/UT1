@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numero = findViewById(R.id.Numero);
         correo = findViewById(R.id.correo);
 
-        texto = findViewById(R.id.acctividadConRespuesta);
+        texto = findViewById(R.id.Respuesta);
 
     }
 
@@ -51,13 +51,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.AcctividadSinRespuesta:
                 mensajero = new Intent(this, ActividadSinRespuesta.class);
                 startActivity(mensajero);
+
                 break;
 
             case R.id.acctividadConRespuesta:
                 mensajero = new Intent(this,ActividadConRespuesta.class);
 
                 //añadimos los datos extra que lleva
-                mensajero.putExtra(campoNumero,Integer.parseInt(numero.getText().toString()));
+                Bundle paquete = new Bundle();
+                paquete.putInt("numero",Integer.parseInt(numero.getText().toString()));
+                mensajero.putExtras(paquete);
 
                 //Iniciamos la actividad y esperamos el resultado
                 startActivityForResult(mensajero,requestCode);
@@ -91,7 +94,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //y los codigo de resultado que nos regresen
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == requestCode) && (resultCode == RESULT_OK)) {
+            Bundle paqueteRecibido= data.getExtras();
 
+            texto.setText(paqueteRecibido.getInt("numero")+"");
         }
     }
 
