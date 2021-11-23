@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View v) {
         Intent datos = new  Intent(getBaseContext(),guardaPalabras.class);
@@ -31,5 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         datos.putExtras(paquete);
         startService(datos);
+
     }
 }

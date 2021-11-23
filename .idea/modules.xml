@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UT1.iml" filepath="$PROJECT_DIR$/.idea/modules/UT1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NumerosPrimos/UT1.NumerosPrimos.iml" filepath="$PROJECT_DIR$/.idea/modules/NumerosPrimos/UT1.NumerosPrimos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/actividadesmasintenciones/UT1.actividadesmasintenciones.iml" filepath="$PROJECT_DIR$/.idea/modules/actividadesmasintenciones/UT1.actividadesmasintenciones.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/actividadesmasintenciones/actividades/UT1.actividadesmasintenciones.actividades.iml" filepath="$PROJECT_DIR$/.idea/modules/actividadesmasintenciones/actividades/UT1.actividadesmasintenciones.actividades.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/UT1.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/UT1.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ejemplo1/UT1.ejemplo1.iml" filepath="$PROJECT_DIR$/.idea/modules/ejemplo1/UT1.ejemplo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ejemplocomunicacionactiviti/UT1.ejemplocomunicacionactiviti.iml" filepath="$PROJECT_DIR$/.idea/modules/ejemplocomunicacionactiviti/UT1.ejemplocomunicacionactiviti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ejemploservicios/UT1.ejemploservicios.iml" filepath="$PROJECT_DIR$/.idea/modules/ejemploservicios/UT1.ejemploservicios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tresenraya/UT1.tresenraya.iml" filepath="$PROJECT_DIR$/.idea/modules/tresenraya/UT1.tresenraya.iml" />
+    </modules>
+  </component>
+</project>

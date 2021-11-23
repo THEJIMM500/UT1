@@ -11,6 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/NumerosPrimos" />
+            <option value="$PROJECT_DIR$/actividadesmasintenciones" />
+            <option value="$PROJECT_DIR$/actividadesmasintenciones/actividades" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/ejemplo1" />
             <option value="$PROJECT_DIR$/ejemplocomunicacionactiviti" />
